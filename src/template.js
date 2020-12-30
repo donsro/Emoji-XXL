@@ -11,12 +11,14 @@ function Item(props) {
 }
 
 function Template(props) {
-    const { url, path } = useRouteMatch();
-    const { linkData, lazyStyle, emo } = props;
-    const linkList = linkData.map((link, index) => {
+    const { url, path } = useRouteMatch(),
+    { linkData, lazyStyle, emo } = props,
+    linkList = linkData.map((link, index) => {
         return (
             <li key={index}>
-                <Link to={`${url}/${link.emoji}/${link.title}`}>{link.label || link.title}</Link>
+                <Link to={`${url}/${link.emoji}/${link.title}`}>
+                    {link.label || link.title}
+                </Link>
             </li>
         );
     });
@@ -27,14 +29,14 @@ function Template(props) {
     return (
         <div className="row justify-content-center">
             <div className="col-auto">
-                <ul className="list-unstyled text-end">
-                    {linkList}
-                </ul>
-            </div>
-            <div className="col-auto">
                 <Route path={`${path}/:emoji/:title`}>
                     <Item emo={emo} />
                 </Route>
+            </div>
+            <div className="col-auto">
+                <ul className="list-unstyled">
+                    {linkList}
+                </ul>
             </div>
         </div>
     );
