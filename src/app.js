@@ -8,9 +8,9 @@ class App extends Component {
 
     render() {
         return (
-            <Fragment>                
+            <Fragment>
                 <nav className="navbar navbar-expand navbar-light bg-light bg-gradient px-3 mb-3">
-                    <ul className="navbar-nav me-auto">                        
+                    <ul className="navbar-nav me-auto">
                         <li className="nav-item">
                             <Link to={`/food/\u{1f34b}/Lemon`} className="nav-link">Food</Link>
                         </li>
@@ -24,16 +24,21 @@ class App extends Component {
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">Home</Link>
-                        </li>                        
+                        </li>
                     </ul>
                 </nav>
 
                 { /* Route components are rendered if the path prop matches the current URL */}
                 <Switch>
-                    <Route path="/food"><Food /></Route>
-                    <Route path="/faces"><Faces /></Route>
-                    <Route path="/time"><Time /></Route>
-                    <Route path="/" exact />
+                    <Route path="/food">
+                        <Food />
+                    </Route>
+                    <Route path="/faces">
+                        <Faces />
+                    </Route>
+                    <Route path="/time">
+                        <Time />
+                    </Route>
                 </Switch>
             </Fragment>
         );
