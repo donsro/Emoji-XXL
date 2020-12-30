@@ -1,43 +1,25 @@
-import React, { useEffect } from "react";
-import { Link, Route, useParams, useRouteMatch } from "react-router-dom";
+import React from "react";
+import Template from "./template.js";
 import lazyStyle, { emo } from "./styles/faces.lazy.css";
+const linkData = [
+    {
+        emoji: "\u{1f607}",
+        title: "Saint"
+    },
+    {
+        emoji: "\u{1f608}",
+        title: "Devil"
+    },
+    {
+        emoji: "\u{1f61c}",
+        title: "Crazy"
+    }
+];
+const props = { lazyStyle, emo, linkData }
 
-function Item() {
-    const { emoji, title } = useParams();
+function Faces() {
     return (
-        <span className={emo} title={title}>
-            {emoji}
-        </span>
-    );
-}
-
-function Faces() {    
-    const { url, path } = useRouteMatch();
-    useEffect(() => {
-        lazyStyle.use();
-        return () => { lazyStyle.unuse(); console.log('Faces CSS unused!'); };
-    });    
-    return (
-        <div className="row justify-content-center">
-            <div className="col-auto">
-                <ul className="list-unstyled text-end">
-                    <li>
-                        <Link to={`${url}/\u{1f607}/Saint`}>Saint</Link>
-                    </li>
-                    <li>
-                        <Link to={`${url}/\u{1f608}/Devil`}>Devil</Link>
-                    </li>
-                    <li>
-                        <Link to={`${url}/\u{1f61c}/Crazy`}>Crazy</Link>
-                    </li>
-                </ul>
-            </div>
-            <div className="col-auto">
-                <Route path={`${path}/:emoji/:title`}>
-                    <Item />
-                </Route>
-            </div>
-        </div>
+        <Template {...props} />
     );
 };
 

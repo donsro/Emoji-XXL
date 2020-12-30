@@ -1,43 +1,28 @@
-import React, { useEffect } from "react";
-import { Link, Route, useParams, useRouteMatch } from "react-router-dom";
+import React from "react";
+import Template from "./template.js";
 import lazyStyle, { emo } from "./styles/time.lazy.css";
+const linkData = [
+    {
+        emoji: "\u{1f550}",
+        title: "1:00",
+        label: "One"
+    },
+    {
+        emoji: "\u{1f551}",
+        title: "2:00",
+        label: "Two"
+    },
+    {
+        emoji: "\u{1f552}",
+        title: "3:00",
+        label: "Three"
+    }
+];
+const props = { lazyStyle, emo, linkData }
 
-function Item() {
-    const { emoji, title } = useParams();
+function Time() {
     return (
-        <span className={emo} title={title}>
-            {emoji}
-        </span>
-    );
-}
-
-function Time() {    
-    const { url, path } = useRouteMatch();
-    useEffect(() => {
-        lazyStyle.use();
-        return () => { lazyStyle.unuse(); console.log('Time CSS unused!'); };
-    });
-    return (
-        <div className="row justify-content-center">
-            <div className="col-auto">
-                <ul className="list-unstyled text-end">
-                    <li>
-                        <Link to={`${url}/\u{1f550}/1:00`}>One</Link>
-                    </li>
-                    <li>
-                        <Link to={`${url}/\u{1f551}/2:00`}>Two</Link>
-                    </li>
-                    <li>
-                        <Link to={`${url}/\u{1f552}/3:00`}>Three</Link>
-                    </li>
-                </ul>
-            </div>
-            <div className="col-auto">
-                <Route path={`${path}/:emoji/:title`}>
-                    <Item />
-                </Route>
-            </div>
-        </div>
+        <Template {...props} />
     );
 };
 
