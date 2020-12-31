@@ -1,7 +1,9 @@
 # Emoji-XXL
-React Router and Extra large emojis
+React Router, Webpack lazy style and extra large emoji images.
 
 ### Demo
 http://donsro.atwebpages.com/projects/Emoji-XXL/public/
 
-Please only note demo server is not configured to support SPA URL refresh.
+Please note demo server is not configured to support SPA URL refresh.
+
+To run localy: `Git clone` > `npm install` > `npm run serve`.
