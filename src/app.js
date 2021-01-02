@@ -3,6 +3,7 @@ import { Link, Route, Switch } from "react-router-dom";
 import Food from "./food.js";
 import Faces from "./faces.js";
 import Time from "./time.js";
+import Home from "./home.js";
 
 class App extends Component {
 
@@ -38,6 +39,9 @@ class App extends Component {
                     </Route>
                     <Route path="/time">
                         <Time />
+                    </Route>
+                    <Route path="/" exact>
+                        <Home />
                     </Route>
                 </Switch>
             </Fragment>
